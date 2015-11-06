@@ -206,6 +206,7 @@ void keyPressed() {
   if (key == 'r') {
         a.reset();        b.reset();        c.reset();
         hawk.reset();     oriole.reset();   jay.reset();
+        score=0;
   }
   if (key == 'A') {
     a.dx *= 2;          // Make a ball go faster!
