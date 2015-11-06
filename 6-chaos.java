@@ -90,6 +90,7 @@ void draw() {
   scene();
   birds();
   balls();
+  text( score+" collisions!", width*5/6, 30 );
   //
   //// Change size of flock!!!!
   if ( flock[0].x > width+200 ) {
@@ -180,7 +181,6 @@ void collision( Ball p, Ball q ) {
     //// Check each ball ONLY against lower ones in the bunch.
     for( int k=j+1; k<m; k++ ){
       elastic( bunch[j], bunch[k] );
-      score++;
     }
   }
 }
@@ -188,6 +188,7 @@ void collision( Ball p, Ball q ) {
 void elastic( Ball one, Ball two ) {
   if( one.hit( two.x, two.y ) ) {
     swap( one, two );
+    score++;
   }
 }
 void swap( Ball p, Ball q ) {
