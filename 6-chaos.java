@@ -65,7 +65,7 @@ void setup() {
   jay=  new Bird();
   jay.b=255;
   //
-  manyBirds=  int( random( 3,30 ) );
+  manyBirds=  int( random(1,30) );
   resetBirds( manyBirds );
   //
   reset();
@@ -76,8 +76,8 @@ void reset() {
   c.reset();
 }
 void resetBirds( int m ) {
-  flock=  new Bird[manyBirds];
-  for( int j=0; j<manyBirds; j++) {
+  flock=  new Bird[m];
+  for( int j=0; j<m; j++) {
     flock[j]=  new Bird( random(0,horizon) );    
   }
 }  
@@ -89,11 +89,13 @@ void draw() {
   scene();
   birds();
   balls();
-  // Change size of flock!
-  if ( flock[0].x > width ) {
+  //
+  //// Change size of flock!!!!
+  if ( flock[0].x > width+200 ) {
     manyBirds=  int(random( 3,20 ));
     resetBirds( manyBirds );
   }
+  text( manyBirds+" birds.", width*2/4, 20 );
   //
   text( s, width/2, 20 );
   //  Add up the numbers, and get the average.
@@ -305,7 +307,6 @@ class Bird {
   }
   void move() {
     x=  x+dx;
-    if (x>width) {    reset();  }
     y=  y+dy;
     if (x>horizon) {
       dy=  -dy;             // Bounce up from grass!
