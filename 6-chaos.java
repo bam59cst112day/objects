@@ -10,6 +10,7 @@ int treeMany;
 Ball a,b,c,d,e;
 Ball[] bunch;
 int manyBalls=15;
+int score=0;
 
 Bird hawk, oriole, jay;
 Bird[] flock;
@@ -65,7 +66,7 @@ void setup() {
   jay=  new Bird();
   jay.b=255;
   //
-  manyBirds=  int( random(1,30) );
+  manyBirds=  int( random(1,20) );
   resetBirds( manyBirds );
   //
   reset();
@@ -173,11 +174,13 @@ void collision( Ball p, Ball q ) {
     tmp=p.dy;  p.dy=q.dy;  q.dy=tmp;
   }
   //// Check all collisions (within the bunch).
+  // NESTED LOOPS //
   int m=  bunch.length;
   for( int j=0; j<m; j++){
     //// Check each ball ONLY against lower ones in the bunch.
     for( int k=j+1; k<m; k++ ){
       elastic( bunch[j], bunch[k] );
+      score++;
     }
   }
 }
